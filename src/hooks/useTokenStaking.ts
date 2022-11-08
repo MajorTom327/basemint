@@ -17,5 +17,6 @@ export const useTokenStaking = (token: StackingBuds) => {
   }, [currentStakeTimestamp]);
 
 
-  return Duration.fromObject({ seconds: stakingTime }).toFormat("dd hh:mm:ss");
+  // return Duration.fromObject({ seconds: stakingTime }).toFormat("d days hh:mm:ss");
+  return Duration.fromObject({ seconds: stakingTime }).toHUman({ listStyle: "long" });
 }
