@@ -10,7 +10,7 @@ export const BudImage: React.FC<Props> = ({ budId }) => {
 
   return (
     <>
-      <img src={buds.image} className="w-48 h-48 rounded-xl drop-shadow-xl" />
+      <img src={buds.image} className="w-32 h-32 rounded-xl drop-shadow-xl" />
     </>
   );
 };
