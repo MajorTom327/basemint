@@ -18,7 +18,7 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
 
   return (
     <>
-      <Card>
+      <Card className="group">
         <div className="flex flex-col items-center">
           <BudImage budId={id} />
           <h1 className="text-2xl font-semibold">{id}</h1>
