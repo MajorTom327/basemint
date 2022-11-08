@@ -3,7 +3,7 @@ import { Contract } from 'web3-eth-contract';
 import { AbiItem } from 'web3-utils';
 
 import BudsContract from './contracts/Buds.json';
-import Buds from './types/Buds';
+import { StackingBuds } from './types/Buds';
 
 const contractAddress = '0xbe44b56bf60b5ee6141345c2b1380bea2915d991'
 
@@ -20,6 +20,10 @@ export class Eth {
     // this.web3.eth.requestAccounts()
   }
 
+  baseUri(): Promise<string> {
+    return this.contract.methods.baseURI().call();
+  }
+
   totalSupply(): Promise<number> {
     return this.contract.methods.totalSupply().call().then((n: string) => parseInt(n));
   }
@@ -28,7 +32,7 @@ export class Eth {
     return this.contract.methods.supplyForSale().call().then((n: string) => parseInt(n));
   }
 
-  walletOfOwner(): Promise<Buds[]> {
+  walletOfOwner(): Promise<StackingBuds[]> {
     return this.web3.eth.requestAccounts()
     .then(async (wallets: string[]) => {
       const [wallet] = wallets;

@@ -1,8 +1,8 @@
 import { Duration, DateTime } from "luxon";
 import { useEffect, useState } from "react";
-import Buds from "../types/Buds";
+import { StackingBuds } from "../types/Buds";
 
-export const useTokenStaking = (token: Buds) => {
+export const useTokenStaking = (token: StackingBuds) => {
   const { currentStakeTimestamp } = token;
   const [stakingTime, setStakingTime] = useState(0);
 

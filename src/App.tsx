@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Owned from "./components/Owned";
-import Staking from "./components/Staking";
 import SupplyCard from "./components/SupplyCard";
 
 type Props = {};
@@ -14,11 +13,6 @@ export const App: React.FC<Props> = ({}) => {
       }}
     >
       <div className="flex flex-col justify-between h-full py-8">
-        <div className="flex justify-around">
-          <div className="flex flex-col gap-4">
-            <Staking />
-          </div>
-        </div>
         <div className="flex justify-center">
           <div className="flex flex-col gap-4 w-2/3">
             <Owned />
