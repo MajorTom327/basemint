@@ -7,12 +7,12 @@ type Props = {};
 export const App: React.FC<Props> = ({}) => {
   return (
     <div
-      className="h-screen w-screen bg-cover bg-center"
+      className="h-screen w-screen bg-cover bg-center bg-fixed"
       style={{
         backgroundImage: `url(https://pbs.twimg.com/media/FgE5pugUYAE43ZG?format=jpg&name=4096x4096)`,
       }}
     >
-      <div className="flex flex-col justify-between h-full py-8">
+      <div className="flex flex-col justify-between h-full py-8 overflow-scroll">
         <div className="flex justify-center">
           <div className="flex flex-col gap-4 w-2/3">
             <Owned />
