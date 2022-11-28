@@ -21,7 +21,12 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
       <Card className="group">
         <div className="flex flex-col items-center">
           <BudImage budId={id} />
-          <h1 className="text-2xl font-semibold">{id}</h1>
+          <a
+            className="text-2xl font-semibold"
+            href={`https://opensea.io/fr/assets/ethereum/0xbe44b56bf60b5ee6141345c2b1380bea2915d991/${id}`}
+          >
+            {id}
+          </a>
           {isStaking && <h2 className="text-xl font-semibold">Staking...</h2>}
           {totalStakeTimeAccrued > 0 && stakingDuration}
         </div>
