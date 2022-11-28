@@ -5,7 +5,7 @@ import { AbiItem } from 'web3-utils';
 import BudsContract from './contracts/Buds.json';
 import { StackingBuds } from './types/Buds';
 
-const contractAddress = '0xbe44b56bf60b5ee6141345c2b1380bea2915d991'
+export const contractAddress = '0xbe44b56bf60b5ee6141345c2b1380bea2915d991'
 
 export class Eth {
   web3: Web3;

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useBud } from "../../hooks/useBud";
 import { useTokenStaking } from "../../hooks/useTokenStaking";
 import { StackingBuds } from "../../types/Buds";
+import { contractAddress } from "../../eth";
 import Card from "../Card";
 import BudImage from "./BudImage";
 
@@ -18,19 +19,19 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
 
   return (
     <>
-      <Card className="group">
-        <div className="flex flex-col items-center">
-          <BudImage budId={id} />
-          <a
-            className="text-2xl font-semibold"
-            href={`https://opensea.io/fr/assets/ethereum/0xbe44b56bf60b5ee6141345c2b1380bea2915d991/${id}`}
-          >
-            {id}
-          </a>
-          {isStaking && <h2 className="text-xl font-semibold">Staking...</h2>}
-          {totalStakeTimeAccrued > 0 && stakingDuration}
-        </div>
-      </Card>
+      <a
+        target="_blank"
+        href={`https://opensea.io/fr/assets/ethereum/${contractAddress}/${id}`}
+      >
+        <Card className="group">
+          <div className="flex flex-col items-center">
+            <BudImage budId={id} />
+            <h1 className="text-2xl font-semibold">{id}</h1>
+            {isStaking && <h2 className="text-xl font-semibold">Staking...</h2>}
+            {totalStakeTimeAccrued > 0 && stakingDuration}
+          </div>
+        </Card>
+      </a>
     </>
   );
 };
