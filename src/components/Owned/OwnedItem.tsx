@@ -16,8 +16,20 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
   const { duration: stakingDuration, stakingTime } = useTokenStaking(token);
   // const bud = useBud(id);
   const isStaking = currentStakeTimestamp !== 0;
-  const stakingPercent =
-    stakingTime / Duration.fromObject({ days: 30 }).as("seconds");
+  const powerDuration = Duration.fromObject({ days: 30 }).as("seconds");
+  const stakingPercent = stakingTime / powerDuration;
+  const [showPercent, setShowPercent] = React.useState(true);
+
+  const toGo = Duration.fromObject({
+    seconds: powerDuration - stakingTime,
+  }).toFormat("d 'days' hh:mm:ss");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowPercent((v) => !v);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -38,7 +50,7 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
                 style={{ width: `${stakingPercent * 100}%` }}
               ></div>
               <div className="absolute top-0 right-0 bottom-0 left-0 text-xs">
-                {(stakingPercent * 100).toFixed(0)}%
+                {showPercent ? `${(stakingPercent * 100).toFixed(0)}%` : toGo}
               </div>
             </div>
           </div>
@@ -46,7 +58,7 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
       </a>
     </>
   );
-};;;;;;;;;;;;;;;
+};
 
 OwnedItem.defaultProps = {
 };
