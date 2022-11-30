@@ -9,7 +9,17 @@ export const useOwning = () => {
 
   useEffect(() => {
     eth.walletOfOwner().then((tokens) => {
-      setOwned(tokens);
+
+      // * Development only
+      // const temps: StackingBuds[] = [
+      //   {
+      //     "id": 3274,
+      //     "currentStakeTimestamp": 1667765615,
+      //     "totalStakeTimeAccrued": 2040420
+      //   }
+      // ]
+      // setOwned(temps || []);
+      setOwned(tokens || []);
     })
   }, []);
 

@@ -13,9 +13,11 @@ type Props = {
 
 export const OwnedItem: React.FC<Props> = ({ token }) => {
   const { id, currentStakeTimestamp, totalStakeTimeAccrued } = token;
-  const stakingDuration = useTokenStaking(token);
-  const bud = useBud(id);
+  const { duration: stakingDuration, stakingTime } = useTokenStaking(token);
+  // const bud = useBud(id);
   const isStaking = currentStakeTimestamp !== 0;
+  const stakingPercent =
+    stakingTime / Duration.fromObject({ days: 30 }).as("seconds");
 
   return (
     <>
@@ -29,12 +31,22 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
             <h1 className="text-2xl font-semibold">{id}</h1>
             {isStaking && <h2 className="text-xl font-semibold">Staking...</h2>}
             {totalStakeTimeAccrued > 0 && stakingDuration}
+
+            <div className="relative w-full rounded-lg flex overflow-hidden bg-gray-400 mt-4">
+              <div
+                className={"h-4 bg-green-600 rounded-lg"}
+                style={{ width: `${stakingPercent * 100}%` }}
+              ></div>
+              <div className="absolute top-0 right-0 bottom-0 left-0 text-xs">
+                {(stakingPercent * 100).toFixed(0)}%
+              </div>
+            </div>
           </div>
         </Card>
       </a>
     </>
   );
-};
+};;;;;;;;;;;;;;;
 
 OwnedItem.defaultProps = {
 };
