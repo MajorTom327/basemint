@@ -19,7 +19,7 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
   const powerDuration = Duration.fromObject({ days: 30 }).as("seconds");
   const captainDuration = Duration.fromObject({ days: 45 }).as("seconds");
 
-  const isPowerStacking = stakingTime < powerDuration;
+  const isPowerStaking = stakingTime < powerDuration;
   const currentMax = isPowerStaking ? powerDuration : captainDuration;
 
   const stakingPercent = stakingTime / currentMax;
