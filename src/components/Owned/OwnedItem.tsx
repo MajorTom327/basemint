@@ -17,11 +17,17 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
   // const bud = useBud(id);
   const isStaking = currentStakeTimestamp !== 0;
   const powerDuration = Duration.fromObject({ days: 30 }).as("seconds");
-  const stakingPercent = stakingTime / powerDuration;
+  const captainDuration = Duration.fromObject({ days: 45 }).as("seconds");
+
+  const isPowerStacking = stakingTime < powerDuration;
+  const currentMax = isPowerStaking ? powerDuration : captainDuration;
+
+  const stakingPercent = stakingTime / currentMax;
+
   const [showPercent, setShowPercent] = React.useState(true);
 
   const toGo = Duration.fromObject({
-    seconds: powerDuration - stakingTime,
+    seconds: currentMax - stakingTime,
   }).toFormat("d 'days' hh:mm:ss");
 
   useEffect(() => {
@@ -44,7 +50,7 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
             {isStaking && <h2 className="text-xl font-semibold">Staking...</h2>}
             {totalStakeTimeAccrued > 0 && stakingDuration}
 
-            {powerDuration - stakingTime > 0 && (
+            {currentMax - stakingTime > 0 && (
               <div className="relative w-full rounded-lg flex overflow-hidden bg-slate-300/30 mt-4">
                 <div
                   className={"h-4 bg-green-600 rounded-lg"}
