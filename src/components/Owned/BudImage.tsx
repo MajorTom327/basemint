@@ -4,10 +4,11 @@ import { useBud } from "../../hooks/useBud";
 
 type Props = {
   budId: number;
+  hasPower: boolean;
 };
 
 export const BudImage: React.FC<Props> = ({ budId }) => {
-  const buds = useBud(budId);
+  const buds = useBud(budId, hasPower);
 
   const classes = classnames(
     "w-32 h-32 rounded-xl drop-shadow-xl  transition-all",

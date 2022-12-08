@@ -19,8 +19,8 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
   const powerDuration = Duration.fromObject({ days: 30 }).as("seconds");
   const captainDuration = Duration.fromObject({ days: 45 }).as("seconds");
 
-  const isPowerStaking = stakingTime < powerDuration;
-  const currentMax = isPowerStaking ? powerDuration : captainDuration;
+  const hasPower = stakingTime > powerDuration;
+  const currentMax = hasPower ? captainDuration : powerDuration;
 
   const stakingPercent = stakingTime / currentMax;
 
@@ -45,7 +45,7 @@ export const OwnedItem: React.FC<Props> = ({ token }) => {
       >
         <Card className="group">
           <div className="flex flex-col items-center">
-            <BudImage budId={id} />
+            <BudImage budId={id} hasPower={hasPower} />
             <h1 className="text-2xl font-semibold">{id}</h1>
             {isStaking && <h2 className="text-xl font-semibold">Staking...</h2>}
             {totalStakeTimeAccrued > 0 && stakingDuration}
