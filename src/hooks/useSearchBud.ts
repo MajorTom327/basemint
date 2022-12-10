@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDebounceEffect } from 'ahooks'
-import { StackingBuds } from "../types";
+import { StackingBuds } from "../types/Buds";
 import eth from "../eth";
 
 export const useSearchBud = (id: string) => {
