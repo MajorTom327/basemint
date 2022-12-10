@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 type Props = {};
 
@@ -9,26 +10,7 @@ export const Root: React.FC<Props> = ({}) => {
       <div className="flex w-full h-full justify-center items-center">
         <Outlet />
       </div>
-      <div className="fixed right-0 bottom-2 left-0 flex justify-evenly">
-        <Link
-          to="/basemint"
-          className="text-amber-700 hover:text-amber-400 hover:underline transition-all"
-        >
-          Home
-        </Link>
-        <Link
-          to="/basemint/supply"
-          className="text-amber-700 hover:text-amber-400 hover:underline transition-all"
-        >
-          Supply
-        </Link>
-        <Link
-          to="/basemint/inspect"
-          className="text-amber-700 hover:text-amber-400 hover:underline transition-all"
-        >
-          Inspect
-        </Link>
-      </div>
+      <Navbar />
     </>
   );
 };
