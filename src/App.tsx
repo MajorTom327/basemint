@@ -3,7 +3,7 @@ import Owned from "./components/Owned";
 import SupplyCard from "./components/SupplyCard";
 import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 
-import { Root, Supply, Home } from "./routes";
+import { Root, Supply, Home, Inspect } from "./routes";
 
 type Props = {};
 
@@ -19,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/basemint/supply",
         element: <Supply />,
+      },
+      {
+        path: "/basemint/inspect",
+        element: <Inspect />,
       },
     ],
   },

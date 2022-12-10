@@ -22,6 +22,12 @@ export const Root: React.FC<Props> = ({}) => {
         >
           Supply
         </Link>
+        <Link
+          to="/basemint/inspect"
+          className="text-amber-700 hover:text-amber-400 hover:underline transition-all"
+        >
+          Inspect
+        </Link>
       </div>
     </>
   );

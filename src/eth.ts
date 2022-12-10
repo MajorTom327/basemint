@@ -57,6 +57,17 @@ export class Eth {
     return Promise.resolve([])
   }
 
+  getStackingBud(id: number): Promise<StackingBuds> {
+    return this.contract.methods.tokenStakeDetails(id).call().then((bud: any) => {
+      const data = bud;
+      return {
+        id,
+        currentStakeTimestamp: parseInt(data.currentStakeTimestamp),
+        totalStakeTimeAccrued: parseInt(data.totalStakeTimeAccrued),
+      };
+    });
+  }
+
   // Staking
   stackingStart(): Promise<any> {
     return this.contract.methods.stakingStartTimestamp().call();
