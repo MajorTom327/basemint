@@ -7,7 +7,7 @@ type Props = {
   hasPower: boolean;
 };
 
-export const BudImage: React.FC<Props> = ({ budId }) => {
+export const BudImage: React.FC<Props> = ({ budId, hasPower }) => {
   const buds = useBud(budId, hasPower);
 
   const classes = classnames(
