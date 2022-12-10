@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDebounceEffect } from 'ahooks'
+import { StackingBuds } from "../types";
 import eth from "../eth";
 
 export const useSearchBud = (id: string) => {
@@ -10,7 +11,7 @@ export const useSearchBud = (id: string) => {
       return;
     }
 
-    eth.getStackingBud(id).then((bud) => {
+    eth.getStackingBud(parseInt(id)).then((bud) => {
       setSearchedBud(bud);
     });
   }, [id], { wait: 1000 })
