@@ -11,19 +11,13 @@ export const Navbar: React.FC<Props> = ({}) => {
         <div className="container mx-auto">
           <Card>
             <div className="flex w-full gap-4 justify-evenly">
-              <Link to="/basemint" className=" hover:underline transition-all">
+              <Link to="/" className=" hover:underline transition-all">
                 Home
               </Link>
-              <Link
-                to="/basemint/supply"
-                className=" hover:underline transition-all"
-              >
+              <Link to="/supply" className=" hover:underline transition-all">
                 Supply
               </Link>
-              <Link
-                to="/basemint/inspect"
-                className=" hover:underline transition-all"
-              >
+              <Link to="/inspect" className=" hover:underline transition-all">
                 Inspect
               </Link>
             </div>

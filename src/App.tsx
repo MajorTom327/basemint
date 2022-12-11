@@ -1,27 +1,25 @@
 import React, { useEffect } from "react";
-import Owned from "./components/Owned";
-import SupplyCard from "./components/SupplyCard";
-import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
 import { Root, Supply, Home, Inspect } from "./routes";
 
 type Props = {};
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "/basemint",
+    path: "/",
     element: <Root />,
     children: [
       {
-        path: "/basemint/",
+        path: "/",
         element: <Home />,
       },
       {
-        path: "/basemint/supply",
+        path: "/supply",
         element: <Supply />,
       },
       {
-        path: "/basemint/inspect",
+        path: "/inspect",
         element: <Inspect />,
       },
     ],
